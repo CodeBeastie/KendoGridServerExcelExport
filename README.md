@@ -11,13 +11,12 @@ Created by Microsoft but  described as unofficial SDK V2.5
 
 Structure notes:
 Spreadsheet document
-	Workbookpart
-		Workbook
-			Sheets
-				Sheet -- holds relationship to worksheetpart
-
-		Worksheetpart -- hooks on to workbookpart
-			worksheet
+  Workbookpart
+    Workbook
+      Sheets
+        Sheet -- holds relationship to worksheetpart
+  Worksheetpart -- hooks on to workbookpart
+    worksheet
 
 
 

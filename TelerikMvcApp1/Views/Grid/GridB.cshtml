@@ -80,16 +80,11 @@
         }
     }
 
-    function ExcelExport()  {
-        //var getparam = CBgrid.GetParameterString();
-        //getparam += "&descendantId=" + descendantParent;
-        //if ($('#TagFilter').val() !== "") {
-        //    getparam += "&tagFilter=" + $('#TagFilter').val();
-        //}
 
+    //Excel Export button. Can pass parameters etc but this one just calls the controller as is
+    function ExcelExport()  {
         var URLexcel = "@Url.Action("ExportAllOnGrid", "Grid")";
-        window.location.href = URLexcel;// + "?" + getparam;
-        ///TagAttributeEditor/ExportWithOpenXml
+        window.location.href = URLexcel;
     }
 
 

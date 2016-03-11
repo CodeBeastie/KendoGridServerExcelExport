@@ -70,20 +70,19 @@ namespace TelerikMvcApp1.Controllers {
 
 
 
-		//[HttpGet]
-		//[Authorize(Roles = "MelRead")]
+
 		public FileResult ExportAllOnGrid([DataSourceRequest]DataSourceRequest request) {
+
+			//Get your data
 			IQueryable<AnimalViewModel> animals = Animals.Instance.ReadAnimals().Select(x => new AnimalViewModel { Id = x.Id, AnimalType = x.AnimalType, Name = x.Name, InZoo = x.InZoo, Age = x.Age });
+
+			//Apply the Kendo filters
 			var res = animals.ToDataSourceResult(request);
+
+			//Get the data from that filtering
 			var data = KendoHelper.GetDataList(res) as IEnumerable<AnimalViewModel>;
 
-			//if (!HasAccess) return null;
-
-			//KendoHelper.BlankSearch(request);
-			//var res = _service.Read(ProjectId, UserId, descendantId, tagFilter).ToDataSourceResult(request);
-			//var data = KendoHelper.GetDataList(res) as IEnumerable<TagHierarchyGridViewModel>;
-
-
+			//generate and return the excel file
 			byte[] filedata = AnimalExcelExport.GetExcelFile( data);
 
 			return File(filedata, "application/vnd.ms-excel", "TagAttributes.xlsx");
